@@ -14,7 +14,7 @@ import { NotifiableInterceptor } from "./notifiable.interceptor";
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
-    CacheService,
+    
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,

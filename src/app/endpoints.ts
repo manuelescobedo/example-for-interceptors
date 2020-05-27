@@ -9,16 +9,15 @@ const API_ENDPOINT = "//openlibrary.org";
   providedIn: "root"
 })
 export class Endpoints {
-  @mockeable()
+  
   bookSearch(query) {
     return `${API_ENDPOINT}/search.json?q=${query}`;
   }
-  @cacheable()
+  
   topicSearch(topic) {
     return `${API_ENDPOINT}/subjects/${topic}.json`;
   }
-  @notifiable()
-  @mockeable()
+
   addBook() {
     return `${API_ENDPOINT}/books.json`;
   }

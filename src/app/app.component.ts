@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.bookService
-      .addBook({})
+      .searchBook('Human')
 
-      .subscribe();
+      .subscribe(console.log);
   }
 }

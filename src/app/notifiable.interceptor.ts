@@ -11,27 +11,9 @@ import { CACHEABLE } from "./cacheable.decorator";
 import { CacheService } from "./cache.service";
 import { tap } from "rxjs/operators";
 import { NOTIFIABLE } from "./notifiable.decorator";
+import { NotificationService } from "./notification.service";
 
-@Injectable({
-  providedIn: "root"
-})
-export class NotificationService {
-  private _getMethod(context) {
-    switch (context) {
-      case "warning":
-        return "warning";
-      case "error":
-        return "error";
-    }
-    return "log";
-  }
-  getSettings() {}
-  prompt(args) {
-    for (const key in args) {
-      console[this._getMethod(args.context)](key, args[key]);
-    }
-  }
-}
+
 
 @Injectable({
   providedIn: "root"
@@ -57,7 +39,9 @@ export class NotifiableInterceptor implements HttpInterceptor {
   };
 
   get notifiableEndpoints() {
-    return Object.entries(this.endpoints[NOTIFIABLE]);
+    const notifiableEndpoints = this.endpoints[NOTIFIABLE];
+    if (notifiableEndpoints) return Object.entries(notifiableEndpoints);
+    return null;
   }
 
   intercept(req, next) {
