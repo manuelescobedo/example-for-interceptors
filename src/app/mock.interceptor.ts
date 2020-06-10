@@ -32,7 +32,7 @@ export class MockInterceptor implements HttpInterceptor {
         const [method] = mockedEndpoint;
 
         try {
-          const body = this.mockedEndpoints[method]();
+          const body = this.mockedEndpoints[method](req);
 
           return of(
             new HttpResponse({

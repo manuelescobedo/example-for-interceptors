@@ -6,6 +6,7 @@ import { Injectable } from "@angular/core";
 })
 export class MockedEndpoints {
   bookSearch() {
+    
     return { docs: [], numFound: 0, num_found: 0, start: 0 };
   }
   addBook() {
